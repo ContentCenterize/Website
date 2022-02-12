@@ -21,7 +21,7 @@ class ListPosts extends Component
             if($user->can('read_all_posts')){
                 $this->posts = Post::all();
             } else{
-                $this->posts = $user->posts();
+                $this->posts = $user->posts()->get();
             }
     }
 }
