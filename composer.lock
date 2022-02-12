@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a59ce14133f9b9fe03d28c5f07362cd1",
+    "content-hash": "f87e3660f223f8bb4187bb3d50d585f5",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -115,6 +115,58 @@
                 "source": "https://github.com/Bacon/BaconQrCode/tree/2.0.6"
             },
             "time": "2022-02-04T20:16:05+00:00"
+        },
+        {
+            "name": "bopoda/robots-txt-parser",
+            "version": "v2.4.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bopoda/robots-txt-parser.git",
+                "reference": "addf555e30ad45c1c44ceee9cfea2c8e4385be87"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bopoda/robots-txt-parser/zipball/addf555e30ad45c1c44ceee9cfea2c8e4385be87",
+                "reference": "addf555e30ad45c1c44ceee9cfea2c8e4385be87",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mbstring": "*",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": ">=3.7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "RobotsTxtParser\\": "src/RobotsTxtParser"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Eugene Yurkevich",
+                    "email": "bopodaa@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "PHP Class for parsing robots.txt files according to Google, Yandex specifications.",
+            "homepage": "https://github.com/bopoda/robots-txt-parser",
+            "keywords": [
+                "google",
+                "parser",
+                "robots.txt",
+                "yandex"
+            ],
+            "support": {
+                "issues": "https://github.com/bopoda/robots-txt-parser/issues",
+                "source": "https://github.com/bopoda/robots-txt-parser/tree/v2.4.1"
+            },
+            "time": "2021-05-11T17:44:18+00:00"
         },
         {
             "name": "brick/math",

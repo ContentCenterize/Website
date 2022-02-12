@@ -10,14 +10,16 @@ class ThirdPartySyncNotification extends Notification
 {
     use Queueable;
     public $thirdParty;
+    public $arrayArgs;
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct(ThirdParty $thirdParty)
+    public function __construct(ThirdParty $thirdParty, $arrayArgs = [])
     {
         $this->thirdParty = $thirdParty;
+        $this->arrayArgs = $arrayArgs;
     }
 
     /**
@@ -39,10 +41,10 @@ class ThirdPartySyncNotification extends Notification
      */
     public function toArray($notifiable)
     {
-        return [
-            'title' => "Synced Third Party",
-            'message' => "Synced {$this->thirdParty->name}",
+        return array_merge([
+            'title' => "同步成功",
+            'message' => "你的網站「{$this->thirdParty->description}」同步成功",
             'type' => 'success',
-        ];
+        ], $this->arrayArgs);
     }
 }

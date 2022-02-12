@@ -11,7 +11,7 @@
                 <div class="p-6 sm:px-20 bg-white border-b border-gray-200">
                     <div>
                         @if (session()->has('message'))
-                            <div class="alert alert-success mb-3">
+                            <div class="alert alert-{{session('message-type')??'success'}} mb-3">
                                 {{ session('message') }}
                             </div>
                         @endif

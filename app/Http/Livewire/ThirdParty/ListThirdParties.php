@@ -7,6 +7,7 @@ use App\Models\Post;
 use App\Models\ThirdParty;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
 use Livewire\Component;
 
 class ListThirdParties extends Component
@@ -43,7 +44,8 @@ class ListThirdParties extends Component
 
     public function sync($id){
         SyncPost::dispatch(ThirdParty::find($id));
-        session()->flash('message', "已開始同步處理");
+        Session::flash('message-type', 'warning');
+        session()->flash('message', "已送出同步處理請求，請見通知欄查看結果");
         return Redirect::route('third-parties.index');
     }
 }
