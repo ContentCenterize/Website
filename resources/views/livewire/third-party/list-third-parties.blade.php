@@ -3,17 +3,19 @@
         <table class="table w-full">
             <thead>
             <tr>
-                <th></th>
-                <th>第三方ID</th>
-                <th>Job</th>
-                <th>Favorite Color</th>
+                <th>基礎網址</th>
+                <th>類別</th>
+                <th>詳細資訊</th>
+                <th>操作</th>
             </tr>
             </thead>
             <tbody>
             @foreach($third_parties as $third_party)
                 <tr>
-                    <th>1</th>
-                    <td>{{$third_party->user_id}}</td>
+                    <td>{{$third_party->base_url}}</td>
+                    <td>{{Config::get("thirdparty.all.{$third_party->type}.name")}}</td>
+                    <td>{{$third_party->description}}</td>
+                    <td>{{$third_party->description}}</td>
                 </tr>
             @endforeach
             </tbody>
