@@ -18,6 +18,7 @@ class PermissionRoleSeeder extends Seeder
         app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
 
         Permission::create(['name' => 'read_all_posts']);
+        Permission::create(['name' => 'read_all_third_parties']);
 
         $role = Role::create(['name' => 'super-admin']);
         $role->givePermissionTo(Permission::all());
