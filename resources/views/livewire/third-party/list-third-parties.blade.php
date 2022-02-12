@@ -24,6 +24,7 @@
                     <td>{{$third_party->description}}</td>
                     <td>
                         <a href="#confirm_deletion_{{$third_party->id}}" class="btn btn-error">刪除</a>
+                        <button wire:click="sync({{$third_party->id}})" class="btn btn-primary">同步</button>
                     </td>
                 </tr>
             @endforeach

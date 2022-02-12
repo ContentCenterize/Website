@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\ThirdParty;
 
+use App\Jobs\SyncPost;
 use App\Models\Post;
 use App\Models\ThirdParty;
 use Illuminate\Support\Facades\Auth;
@@ -39,7 +40,7 @@ class ListThirdParties extends Component
         }
     }
 
-    public function confirmingUserDeletion(){
-        return false;
+    public function sync($id){
+        SyncPost::dispatch(ThirdParty::find($id));
     }
 }

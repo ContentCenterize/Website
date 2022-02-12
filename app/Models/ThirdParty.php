@@ -11,7 +11,8 @@ class ThirdParty extends Model
     protected $fillable = [
         'base_url',
         'type',
-        'description'
+        'description',
+        'updated'
     ];
     public function user(){
         return $this->belongsTo(User::class);

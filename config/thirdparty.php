@@ -5,7 +5,7 @@ return [
         'blogger' => [
             'name' => 'Google Blogger',
             'default' => true,
-            'feed' => '/feed?alt=json'
+            'feed' => '/feeds/posts/default?alt=json'
         ]
     ]
 ];
