@@ -11,7 +11,8 @@ class Post extends Model
     protected $fillable = [
         'title',
         'content',
-        'post_id_in_thirdparty'
+        'post_id_in_thirdparty',
+        'visible'
     ];
 
     public function third_party(){

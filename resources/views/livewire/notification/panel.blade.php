@@ -17,7 +17,7 @@
             <div wire:poll.visible>
                 <div class="text-white notifications-panel">
                     <div class="border-b border-80 ">
-                        <div class="text-center px-6" id="notifications-panel-close" wire:click="togglePanel">&times;</div>
+                        <div class="text-center px-6" id="notifications-panel-close" wire:click="togglePanel(true)">&times;</div>
                     </div>
                     <div class="px-4 border-b border-80 overflow-y-scroll h-full">
                         @foreach($notifications as $notification)

@@ -67,7 +67,8 @@ class User extends Authenticatable
     public function getPostsAttribute(){
         $c = collect();
         foreach($this->third_parties as $tp){
-            $c->push($tp->posts);
+            if(!is_null($tp->posts))
+                $c->push($tp->posts);
         }
         return $c;
     }

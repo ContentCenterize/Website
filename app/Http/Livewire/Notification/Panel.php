@@ -23,8 +23,15 @@ class Panel extends Component
         $this->currentURL = url()->current();
     }
 
-    public function togglePanel(){
+    public function togglePanel($removeAll=false){
+        $user = Auth::user();
+
         $this->panelOpen = !$this->panelOpen;
+        if($removeAll){
+            $user->unreadNotifications->markAsRead();
+            return Redirect::to($this->currentURL);
+        }
+
     }
 
     public function readNotification($id){

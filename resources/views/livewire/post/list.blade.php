@@ -1,20 +1,38 @@
 <div class="overflow-x-auto">
-    @if(count($posts) != 0)
+    @if($posts->count() != 0)
         <table class="table w-full">
             <thead>
             <tr>
                 <th>標題</th>
                 <th>文章於第三方ID</th>
-                <th>Job</th>
-                <th>Favorite Color</th>
+                <th>第三方類別</th>
+                <th>顯示？</th>
             </tr>
             </thead>
             <tbody>
             @foreach($posts as $post)
                 <tr>
                     <th>{{$post->title}}</th>
-                    <td>{{$post->post_id_in_thirdparty}}</td>
-                    <td>{{Config::get("thirdparty.all.{$post->third_party()->first()->type}.name")}}</td>
+                    @if($post->third_party()->first()->type == 'blogger')
+                        <td>{{explode(':', $post->post_id_in_thirdparty)[2]}}</td>
+                    @else
+                        <td>{{$post->post_id_in_thirdparty}}</td>
+                    @endif
+                    <td>{{$post->third_party()->first()->name}}</td>
+                    <td>
+                        <div class="flex justify-center">
+                            <div class="form-check form-switch">
+                                <input
+                                    class="form-check-input appearance-none w-9 -ml-10 rounded-full float-left h-5 align-top bg-white bg-no-repeat bg-contain focus:outline-none cursor-pointer shadow-sm"
+                                    type="checkbox" id="flexSwitchCheckChecked"
+                                    wire:click="toggleVisible({{$post->id}})"
+                                    @if($post->visible)
+                                    checked
+                                    @endif
+                                >
+                            </div>
+                        </div>
+                    </td>
                 </tr>
             @endforeach
             </tbody>

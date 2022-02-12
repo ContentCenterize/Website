@@ -1,11 +1,4 @@
 <div class="overflow-x-auto">
-    <div>
-        @if (session()->has('message'))
-            <div class="alert alert-success mb-3">
-                {{ session('message') }}
-            </div>
-        @endif
-    </div>
     @if(count($third_parties) != 0)
         <table class="table w-full">
             <thead>

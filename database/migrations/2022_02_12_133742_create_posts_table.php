@@ -19,6 +19,7 @@ class CreatePostsTable extends Migration
             $table->bigInteger('third_party_id');
             $table->string('post_id_in_thirdparty');
             $table->text('content');
+            $table->boolean('visible')->default(true);
             $table->softDeletes();
             $table->timestamps();
         });
