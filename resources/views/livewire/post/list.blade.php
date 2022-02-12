@@ -3,8 +3,8 @@
         <table class="table w-full">
             <thead>
             <tr>
-                <th></th>
-                <th>第三方ID</th>
+                <th>標題</th>
+                <th>文章於第三方ID</th>
                 <th>Job</th>
                 <th>Favorite Color</th>
             </tr>
@@ -12,8 +12,8 @@
             <tbody>
             @foreach($posts as $post)
                 <tr>
-                    <th>1</th>
-                    <td>{{$post->thirdparty_id}}</td>
+                    <th>{{$post->title}}</th>
+                    <td>{{$post->post_id_in_thirdparty}}</td>
                 </tr>
             @endforeach
             </tbody>

@@ -14,7 +14,12 @@ class ThirdParty extends Model
         'description',
         'updated'
     ];
+
     public function user(){
         return $this->belongsTo(User::class);
+    }
+
+    public function posts(){
+        return $this->hasOne(Post::class);
     }
 }

@@ -11,10 +11,10 @@ class Post extends Model
     protected $fillable = [
         'title',
         'content',
-        'thirdparty_id'
+        'post_id_in_thirdparty'
     ];
 
-    public function user(){
-        return $this->belongsTo(User::class);
+    public function third_party(){
+        return $this->belongsTo(ThirdParty::class);
     }
 }

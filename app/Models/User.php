@@ -64,7 +64,11 @@ class User extends Authenticatable
         return $this->hasMany(ThirdParty::class);
     }
 
-    public function posts(){
-        return $this->hasMany(Post::class);
+    public function getPostsAttribute(){
+        $c = collect();
+        foreach($this->third_parties as $tp){
+            $c->push($tp->posts);
+        }
+        return $c;
     }
 }

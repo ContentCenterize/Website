@@ -30,13 +30,16 @@ class SyncPost implements ShouldQueue, ShouldBeUnique
         $tp = $this->thirdParty;
         $response = Http::get($tp->base_url.Config::get("thirdparty.all.{$tp->type}.feed"));
         Log::info($response->body());
+        $tp->update([
+           'updated' => $response['feed']['updated']['$t']
+        ]);
         foreach($response['feed']['entry'] as $data){
-            $post = Auth::user()->posts()->where('thirdparty_id', $data['id']['$t'])->first();
+            $post = $tp->posts()->where('post_id_in_thirdparty', $data['id']['$t'])->first();
             if(is_null($post)){
-                Auth::user()->posts()->create([
+                $tp->posts()->create([
                     'title' => $data['title']['$t'],
                     'content' => $data['content']['$t'],
-                    'thirdparty_id' => $data['id']['$t']
+                    'post_id_in_thirdparty' => $data['id']['$t']
                 ]);
             } else {
                 $post->update([
