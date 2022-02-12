@@ -4,6 +4,7 @@ namespace App\Jobs;
 
 use App\Models\Post;
 use App\Models\ThirdParty;
+use App\Notifications\ThirdPartySyncNotification;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -29,7 +30,6 @@ class SyncPost implements ShouldQueue, ShouldBeUnique
     {
         $tp = $this->thirdParty;
         $response = Http::get($tp->base_url.Config::get("thirdparty.all.{$tp->type}.feed"));
-        Log::info($response->body());
         $tp->update([
            'updated' => $response['feed']['updated']['$t']
         ]);
@@ -47,8 +47,9 @@ class SyncPost implements ShouldQueue, ShouldBeUnique
                     'content' => $data['content']['$t']
                 ]);
             }
-            Log::info($post);
         }
+
+        Auth::user()->notify(new ThirdPartySyncNotification($tp));
     }
 
     public $uniqueFor = 3600;
