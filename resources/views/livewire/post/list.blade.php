@@ -14,6 +14,7 @@
                 <tr>
                     <th>{{$post->title}}</th>
                     <td>{{$post->post_id_in_thirdparty}}</td>
+                    <td>{{Config::get("thirdparty.all.{$post->third_party()->first()->type}.name")}}</td>
                 </tr>
             @endforeach
             </tbody>

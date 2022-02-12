@@ -1,7 +1,7 @@
 <div class="overflow-x-auto">
     <div>
         @if (session()->has('message'))
-            <div class="alert alert-success">
+            <div class="alert alert-success mb-3">
                 {{ session('message') }}
             </div>
         @endif
@@ -13,6 +13,7 @@
                 <th>基礎網址</th>
                 <th>類別</th>
                 <th>詳細資訊</th>
+                <th>上次更新</th>
                 <th>操作</th>
             </tr>
             </thead>
@@ -22,6 +23,7 @@
                     <td>{{$third_party->base_url}}</td>
                     <td>{{Config::get("thirdparty.all.{$third_party->type}.name")}}</td>
                     <td>{{$third_party->description}}</td>
+                    <td>{{\Carbon\Carbon::parse($third_party->updated)->shortRelativeToNowDiffForHumans()}}</td>
                     <td>
                         <a href="#confirm_deletion_{{$third_party->id}}" class="btn btn-error">刪除</a>
                         <button wire:click="sync({{$third_party->id}})" class="btn btn-primary">同步</button>

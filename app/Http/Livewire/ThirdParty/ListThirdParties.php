@@ -42,5 +42,6 @@ class ListThirdParties extends Component
 
     public function sync($id){
         SyncPost::dispatch(ThirdParty::find($id));
+        session()->flash('message', "已開始同步處理");
     }
 }
