@@ -7,6 +7,7 @@
                 <th>文章於第三方ID</th>
                 <th>第三方類別</th>
                 <th>顯示？</th>
+                <th>操作</th>
             </tr>
             </thead>
             <tbody>
@@ -32,6 +33,14 @@
                                 >
                             </div>
                         </div>
+                    </td>
+                    <td>
+                        @if($post->third_party()->first()->type == 'blogger')
+                            <a href="https://www.blogger.com/blog/post/edit/{{get_id_from_blogger_id($post->post_id_in_thirdparty)['blog']}}/{{get_id_from_blogger_id($post->post_id_in_thirdparty)['post']}}"
+                               target="_blank"
+                               class="btn btn-primary"
+                            >編輯</a>
+                        @endif
                     </td>
                 </tr>
             @endforeach

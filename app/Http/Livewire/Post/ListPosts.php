@@ -9,7 +9,6 @@ use Livewire\Component;
 class ListPosts extends Component
 {
     public $posts;
-
     public function render()
     {
         return view('livewire.post.list');

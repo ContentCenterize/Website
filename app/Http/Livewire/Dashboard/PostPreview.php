@@ -20,7 +20,10 @@ class PostPreview extends Component
         if($user->can('read_all_posts')){
             $this->posts = Post::all();
         } else{
-            $this->posts = $user->posts;
+            $this->posts = $user->posts->filter(function($p){
+                if($p->visible) return true;
+                return false;
+            });
         }
     }
 }
