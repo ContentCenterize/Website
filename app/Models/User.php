@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use phpDocumentor\Reflection\Types\This;
 
 class User extends Authenticatable
 {
@@ -61,5 +62,9 @@ class User extends Authenticatable
 
     public function third_parties(){
         return $this->hasMany(ThirdParty::class);
+    }
+
+    public function posts(){
+        return $this->hasMany(Post::class);
     }
 }
