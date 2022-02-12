@@ -21,7 +21,7 @@ class ThirdParty extends Model
     }
 
     public function posts(){
-        return $this->hasOne(Post::class);
+        return $this->hasMany(Post::class);
     }
 
     public function getNameAttribute(){
