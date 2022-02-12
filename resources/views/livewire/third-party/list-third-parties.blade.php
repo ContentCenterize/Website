@@ -1,4 +1,11 @@
 <div class="overflow-x-auto">
+    <div>
+        @if (session()->has('message'))
+            <div class="alert alert-success">
+                {{ session('message') }}
+            </div>
+        @endif
+    </div>
     @if(count($third_parties) != 0)
         <table class="table w-full">
             <thead>
@@ -15,7 +22,9 @@
                     <td>{{$third_party->base_url}}</td>
                     <td>{{Config::get("thirdparty.all.{$third_party->type}.name")}}</td>
                     <td>{{$third_party->description}}</td>
-                    <td>{{$third_party->description}}</td>
+                    <td>
+                        <a href="#confirm_deletion_{{$third_party->id}}" class="btn btn-error">刪除</a>
+                    </td>
                 </tr>
             @endforeach
             </tbody>
@@ -33,5 +42,21 @@
         </div>
     @endif
 
+    @foreach($third_parties as $third_party)
+        <div id="confirm_deletion_{{$third_party->id}}" class="modal">
+            <div class="modal-box">
+                <div class="p-10 card bg-base-200">
+                    <div class="form-control">
+                        <p>你確定要刪除嗎？一旦刪除就無法恢復</p>
+                        <input type="text" placeholder="輸入 {{$third_party->id}}" wire:model="confirmText" class="input mt-3">
+                        <div class="modal-action">
+                            <a href="#" class="btn btn-error" wire:click="delete({{$third_party->id}})" {{$confirmText == $third_party->id ? '' : 'disabled'}}>確定</a>
+                            <a href="#" class="btn">Close</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endforeach
 </div>
 
