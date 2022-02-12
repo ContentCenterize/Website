@@ -37,7 +37,7 @@ class SyncPost implements ShouldQueue, ShouldBeUnique
         $robots = new RobotsTxtParser(Http::get($tp->base_url . '/robots.txt')->body());
         $robots_validator = new RobotsTxtValidator($robots->getRules());
 
-        if ($robots_validator->isUrlAllow('/', 'bot')) {
+        if ($robots_validator->isUrlAllow('/', 'bot') && Auth::user()->can('override_robots')) {
             return Auth::user()->notify(new ThirdPartySyncNotification($tp, [
                 'title' => '錯誤： 同步失敗',
                 'message' => "你的網站「{$tp->description}」必須關閉搜尋引擎索引 {$tp->base_url}",

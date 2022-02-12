@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
 
@@ -15,7 +16,9 @@ use App\Models\User;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome')->with('posts', Post::all()->filter(function($v){
+        return true;
+    }));
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
