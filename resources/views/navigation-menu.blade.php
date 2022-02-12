@@ -18,6 +18,9 @@
                     <x-jet-nav-link href="{{ route('posts.index') }}" :active="request()->routeIs('posts.index')">
                         {{ __('所有文章') }}
                     </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('third-parties.index') }}" :active="request()->routeIs('third-parties.index')">
+                        {{ __('第三方') }}
+                    </x-jet-nav-link>
                 </div>
             </div>
 

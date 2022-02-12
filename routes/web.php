@@ -24,6 +24,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     })->name('dashboard');
 
     Route::resource('posts', \App\Http\Controllers\PostController::class);
+    Route::resource('third-parties', \App\Http\Controllers\ThirdPartyController::class);
 });
 Route::get('/auth/redirect', function () {
     return Socialite::driver('keycloak')->redirect();
