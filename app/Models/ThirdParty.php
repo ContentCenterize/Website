@@ -27,4 +27,13 @@ class ThirdParty extends Model
     public function getNameAttribute(){
         return Config::get("thirdparty.all.{$this->type}.name");
     }
+
+    public static function boot() {
+        parent::boot();
+        self::deleting(function($tp) {
+            $tp->posts()->each(function($post) {
+                $post->delete();
+            });
+        });
+    }
 }
