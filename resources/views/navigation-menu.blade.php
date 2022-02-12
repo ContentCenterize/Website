@@ -127,6 +127,7 @@
                         </x-slot>
                     </x-jet-dropdown>
                 </div>
+                <livewire:notification.panel/>
             </div>
 
             <!-- Hamburger -->

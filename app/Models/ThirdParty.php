@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Config;
 
 class ThirdParty extends Model
 {
@@ -21,5 +22,9 @@ class ThirdParty extends Model
 
     public function posts(){
         return $this->hasOne(Post::class);
+    }
+
+    public function getNameAttribute(){
+        return Config::get("thirdparty.all.{$this->type}.name");
     }
 }

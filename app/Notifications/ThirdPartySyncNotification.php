@@ -40,8 +40,9 @@ class ThirdPartySyncNotification extends Notification
     public function toArray($notifiable)
     {
         return [
-            'message' => 'Synced',
-            'third_party' => $this->thirdParty->id
+            'title' => "Synced Third Party",
+            'message' => "Synced {$this->thirdParty->name}",
+            'type' => 'success',
         ];
     }
 }

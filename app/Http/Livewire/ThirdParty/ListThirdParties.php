@@ -38,10 +38,12 @@ class ListThirdParties extends Component
         } else {
             session()->flash('message', '刪除失敗');
         }
+        return Redirect::route('third-parties.index');
     }
 
     public function sync($id){
         SyncPost::dispatch(ThirdParty::find($id));
         session()->flash('message', "已開始同步處理");
+        return Redirect::route('third-parties.index');
     }
 }
