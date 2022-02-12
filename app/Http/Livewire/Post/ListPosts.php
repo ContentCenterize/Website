@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Post;
 
 use App\Models\Post;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class ListPosts extends Component
@@ -16,6 +17,11 @@ class ListPosts extends Component
 
     public function mount()
     {
-        $this->posts = Post::all();
+            $user = Auth::user();
+            if($user->can('read_all_posts')){
+                $this->posts = Post::all();
+            } else{
+                $this->posts = $user->posts();
+            }
     }
 }
