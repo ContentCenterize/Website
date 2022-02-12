@@ -77,7 +77,7 @@
                         </div>
 
                         <div class="flex items-center text-sm text-light">
-                            <img src="https://laravel-blog-assets.s3.amazonaws.com/4hOAcIZodxIYVD71y2Qzo1HAMPiHXqBfSRnoZQAw.jpeg" class="w-10 h-10 rounded-full" title="Dries Vints">
+                            <img src="https://www.gravatar.com/avatar/{{md5($post->third_party->user->email)}}" class="w-10 h-10 rounded-full" title="Dries Vints">
                             <span class="ml-2">{{$post->third_party->user->name}}</span>
                             <span class="ml-auto">{{$post->updated_at}}</span>
                         </div>
