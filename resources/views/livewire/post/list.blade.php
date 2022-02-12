@@ -13,9 +13,9 @@
             <tbody>
             @foreach($posts as $post)
                 <tr>
-                    <th>{{$post->title}}</th>
+                    <th>{{mb_substr($post->title, 0,50)}}</th>
                     @if($post->third_party()->first()->type == 'blogger')
-                        <td>{{explode(':', $post->post_id_in_thirdparty)[2]}}</td>
+                        <td>{{get_id_from_blogger_id($post->post_id_in_thirdparty)['post']}}</td>
                     @else
                         <td>{{$post->post_id_in_thirdparty}}</td>
                     @endif
