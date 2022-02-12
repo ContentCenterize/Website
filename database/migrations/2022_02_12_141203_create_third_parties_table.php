@@ -19,6 +19,7 @@ class CreateThirdPartiesTable extends Migration
             $table->string('base_url');
             $table->text('description')->default('無詳細資訊');
             $table->bigInteger('user_id');
+            $table->string('updated')->nullable();
             $table->timestamps();
         });
     }
