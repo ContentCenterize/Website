@@ -20,6 +20,14 @@ mix.js('resources/js/app.js', 'public/js')
     .postCss('resources/css/blog.css', 'public/css', [
         require('postcss-import'),
         require('tailwindcss'),
+    ])
+    .postCss('resources/css/blog/mobile.css', 'public/css/blog', [
+        require('postcss-import'),
+        require('tailwindcss'),
+    ])
+    .postCss('resources/css/blog/style.css', 'public/css/blog', [
+        require('postcss-import'),
+        require('tailwindcss'),
     ]);
 
 if (mix.inProduction()) {

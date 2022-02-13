@@ -16,7 +16,7 @@ use App\Models\User;
 */
 
 Route::get('/', function () {
-    return view('welcome')->with('posts', Post::all()->filter(function($v){
+    return view('blog.index')->with('posts', Post::all()->filter(function($v){
         return true;
     }));
 });

@@ -68,30 +68,17 @@
     </div>
 </nav>
 
+@yield('header')
 
+@section('main-content')
 
 <section id="article">
     <div class="container">
-        <div class="page-container">
-            {{ $slot }}
-
-            <aside class="card bg-secondary" style="width: 10vw;">
-                <h2>Join Our Club</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, nulla!</p>
-                <a href="#" class='btn btn-dak btn-block'>Join Now</a>
-            </aside>
-            <aside id="categories" class="card">
-                <h2>Categories</h2>
-                <ul class="list">
-                    <li><a href="#"><i class="fas fa-chevron-right"></i>Sports</a></li>
-                    <li><a href="#"><i class="fas fa-chevron-right"></i>Entertainment</a></li>
-                    <li><a href="#"><i class="fas fa-chevron-right"></i>Technology</a></li>
-                    <li><a href="#"><i class="fas fa-chevron-right"></i>Fashion</a></li>
-                </ul>
-            </aside>
-        </div>
+        @yield('main')
     </div>
 </section>
+
+@show
 
 <footer id='main-footer' class='py-2'>
     <div class="container footer-container">
@@ -124,7 +111,8 @@
         </div>
         <div>
             <p>
-                Copyright NewsGrid &copy; 2019, All Rights reserved.
+                Template from <a href="https://github.com/imshashikantdev/WTFNews" target="_blank">NewsGrid (MIT)</a> &copy;
+                {{\Carbon\Carbon::now()->year}}
             </p>
         </div>
     </div>
