@@ -23,26 +23,30 @@ class SyncPost implements ShouldQueue, ShouldBeUnique
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     protected $thirdParty;
+    protected $user;
 
     public function __construct(ThirdParty $thirdParty)
     {
         $this->thirdParty = $thirdParty;
+        $this->user = Auth::user();
     }
 
     public function handle()
     {
+        Log::debug('開始');
         $tp = $this->thirdParty;
 
         # Step1: Check robots.txt
         $robots = new RobotsTxtParser(Http::get($tp->base_url . '/robots.txt')->body());
         $robots_validator = new RobotsTxtValidator($robots->getRules());
 
-        if ($robots_validator->isUrlAllow('/', 'bot') && Auth::user()->can('override_robots')) {
-            return Auth::user()->notify(new ThirdPartySyncNotification($tp, [
+        if ($robots_validator->isUrlAllow('/', 'bot') && $this->user->can('override_robots')) {
+            $this->user->notify(new ThirdPartySyncNotification($tp, [
                 'title' => '錯誤： 同步失敗',
                 'message' => "你的網站「{$tp->description}」必須關閉搜尋引擎索引 {$tp->base_url}",
                 'type' => 'error'
             ]));
+            return;
         }
 
         $response = Http::get($tp->base_url . Config::get("thirdparty.all.{$tp->type}.feed"));
@@ -54,24 +58,18 @@ class SyncPost implements ShouldQueue, ShouldBeUnique
             if (is_null($post)) {
                 $tp->posts()->create([
                     'title' => $data['title']['$t'],
-                    'content' => $data['content']['$t'],
+                    'content' => replace_code_to_block($data['content']['$t']),
                     'post_id_in_thirdparty' => $data['id']['$t']
                 ]);
             } else {
                 $post->update([
                     'title' => $data['title']['$t'],
-                    'content' => $data['content']['$t']
+                    'content' => replace_code_to_block($data['content']['$t'])
                 ]);
             }
         }
 
-        Auth::user()->notify(new ThirdPartySyncNotification($tp));
+        $this->user->notify(new ThirdPartySyncNotification($tp));
     }
 
-    public $uniqueFor = 3600;
-
-    public function uniqueId()
-    {
-        return $this->thirdParty->id;
-    }
 }
