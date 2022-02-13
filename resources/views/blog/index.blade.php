@@ -37,7 +37,7 @@
                             <h3>
                                 <a href="{{route('posts.show', $post->id)}}">{{$post->title}}</a>
                             </h3>
-                            <p>{{ post_string_excerpt($post->content) }}</p>
+                            <p>{!! post_string_excerpt($post->content) !!}</p>
                         </div>
                     </article>
                 @endforeach
