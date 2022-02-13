@@ -11,7 +11,7 @@
             <div class="meta" style="margin-bottom: 1rem;">
                 <p><i class="fa fa-user"></i>： {{$post->third_party->user->name}}&nbsp;&nbsp;&nbsp;<i
                         class="fa fa-calendar"></i>： {{$post->updated_at->shortRelativeToNowDiffForHumans()}}</p>
-                <div class="category category-ent">Entertainment</div>
+                <div class="category category-ent">{{$post->category()->first()->name}}</div>
             </div>
 
             <div id="blog_content">
