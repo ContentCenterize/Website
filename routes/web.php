@@ -21,6 +21,11 @@ Route::get('/', function () {
     }));
 });
 
+Route::prefix('sitemap')->group(function(){
+    Route::get('/', [\App\Http\Controllers\SitemapController::class, 'index']);
+    Route::get('/posts', [\App\Http\Controllers\SitemapController::class, 'posts']);
+});
+
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
