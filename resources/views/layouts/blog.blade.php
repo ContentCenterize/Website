@@ -41,12 +41,12 @@
 <body>
 <nav id="main-nav">
     <div class="container">
-        <img src="img/logo.png" alt="NewsMedia" class="logo">
+        <a href="/"><img src="img/logo.png" alt="NewsMedia" class="logo"></a>
         <div class='social'>
-            <a href="http://facebook.com.br" target='blank'><i class="fab fa-facebook fa-2x"></i></a>
-            <a href="http://twitter.com.br" target='blank'><i class="fab fa-twitter fa-2x"></i></a>
-            <a href="http://instagram.com.br" target='blank'><i class="fab fa-instagram fa-2x"></i></a>
-            <a href="http://youtube.com.br" target='blank'><i class="fab fa-youtube fa-2x"></i></a>
+            <a href="http://facebook.com" target='blank'><i class="fab fa-facebook fa-2x"></i></a>
+            <a href="http://twitter.com" target='blank'><i class="fab fa-twitter fa-2x"></i></a>
+            <a href="http://instagram.com" target='blank'><i class="fab fa-instagram fa-2x"></i></a>
+            <a href="http://youtube.com" target='blank'><i class="fab fa-youtube fa-2x"></i></a>
         </div>
         <ul>
             <li><a href="/">Home</a></li>
@@ -84,35 +84,34 @@
     <div class="container footer-container">
         <div>
             <img src="img/logo_light.png" alt="logo">
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Praesentium quod ratione veniam sit harum
-                excepturi sed quos dignissimos maxime consequatur.</p>
+            <p>網站建置中～</p>
         </div>
         <div>
-            <h3>Email Newsletter</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <h3>郵寄電子報</h3>
+            <p>輸入你的電子信箱來獲取電子報</p>
             <form>
                 <input type="email" placeholder="Email:" required>
                 <input type="submit" value="Subscribe" class='btn btn-primary'>
             </form>
         </div>
         <div>
-            <h3>Site Links</h3>
+            <h3>網站連結</h3>
             <ul class='list'>
+                <li><a href="https://policy.hsuan.app">隱私權政策及使用條款</a></li>
                 <li><a href="#">Help and Support</a></li>
-                <li><a href="#">Privacy Policy</a></li>
                 <li><a href="#">About Us</a></li>
                 <li><a href="#">Contact</a></li>
             </ul>
         </div>
         <div>
-            <h2>Join our Club</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, provident.</p>
+            <h2>加入我們</h2>
+            <p>立即在Facebook上關注我們</p>
             <a href="#" class="btn btn-secondary">Join Now</a>
         </div>
         <div>
             <p>
-                Template from <a href="https://github.com/imshashikantdev/WTFNews" target="_blank">NewsGrid (MIT)</a> &copy;
-                {{\Carbon\Carbon::now()->year}}
+                版面設計：<a href="https://github.com/imshashikantdev/WTFNews" target="_blank">NewsGrid (MIT)</a> &copy;
+                {{\Carbon\Carbon::now()->year}} <a href="https://hsuan.app" target="_blank">Hsuan Internet</a>
             </p>
         </div>
     </div>
