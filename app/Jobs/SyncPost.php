@@ -40,7 +40,7 @@ class SyncPost implements ShouldQueue
         $robots = new RobotsTxtParser(Http::get($tp->base_url . '/robots.txt')->body());
         $robots_validator = new RobotsTxtValidator($robots->getRules());
 
-        if ($robots_validator->isUrlAllow('/', 'bot') && $this->user->can('override_robots')) {
+        if ($robots_validator->isUrlAllow('/', 'bot') && $this->user->cannot('override_robots')) {
             $this->user->notify(new ThirdPartySyncNotification($tp, [
                 'title' => '錯誤： 同步失敗',
                 'message' => "你的網站「{$tp->description}」必須關閉搜尋引擎索引 {$tp->base_url}",
