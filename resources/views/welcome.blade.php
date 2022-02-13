@@ -64,7 +64,7 @@
         </header>
         <div class="container mx-auto px-5 lg:max-w-screen-sm">
             @foreach($posts as $post)
-                <a class="no-underline transition block border border-lighter w-full mb-10 p-5 rounded post-card" href="https://blog.laravel.com/laravel-v9-released">
+                <a class="no-underline transition block border border-lighter w-full mb-10 p-5 rounded post-card" href="{{route('posts.show', ['post' => $post->id])}}">
                     <div class="flex flex-col justify-between flex-1">
                         <div>
                             <h2 class="font-sans leading-normal block mb-6">

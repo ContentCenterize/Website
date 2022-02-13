@@ -41,6 +41,10 @@
                                class="btn btn-primary"
                             >編輯</a>
                         @endif
+                            <a href="{{route('posts.show', ['post' => $post->id])}}"
+                               target="_blank"
+                               class="btn btn-primary"
+                            >檢視</a>
                     </td>
                 </tr>
             @endforeach

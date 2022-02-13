@@ -36,9 +36,9 @@
                     {!!mb_substr( strip_tags($post->content), 0,200).'...'!!}
                 </div>
 
-                <a href="https://laravel.com/docs">
+                <a href="{{route('posts.show', ['post' => $post->id])}}" target="_blank">
                     <div class="mt-3 flex items-center text-sm font-semibold text-indigo-700">
-                        <div>Explore the documentation</div>
+                        <div>查看文章</div>
 
                         <div class="ml-1 text-indigo-500">
                             <svg viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4">
