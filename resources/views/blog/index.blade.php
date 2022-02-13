@@ -26,13 +26,13 @@
             <h2>精選文章</h2>
             <div class="articles-container">
                 @foreach($posts as $post)
-                    <article class="card">
+                    <article class="card {{get_color($post)}}">
                         @if(get_first_img($post->content) != '')
                             <img src="{{get_first_img($post->content)}}" alt="photo">
                         @endif
                         <div>
                             <div class="category category-ent">
-                                Entertainment
+                                {{$post->category()->first()->name}}
                             </div>
                             <h3>
                                 <a href="{{route('posts.show', $post->id)}}">{{$post->title}}</a>

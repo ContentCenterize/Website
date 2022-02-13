@@ -23,14 +23,6 @@
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, nulla!</p>
             <a href="#" class='btn btn-dak btn-block'>Join Now</a>
         </aside>
-        <aside id="categories" class="card">
-            <h2>Categories</h2>
-            <ul class="list">
-                <li><a href="#"><i class="fas fa-chevron-right"></i>Sports</a></li>
-                <li><a href="#"><i class="fas fa-chevron-right"></i>Entertainment</a></li>
-                <li><a href="#"><i class="fas fa-chevron-right"></i>Technology</a></li>
-                <li><a href="#"><i class="fas fa-chevron-right"></i>Fashion</a></li>
-            </ul>
-        </aside>
+        <x-categories/>
     </div>
 @endsection

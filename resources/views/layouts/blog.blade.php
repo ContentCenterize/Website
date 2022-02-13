@@ -53,13 +53,13 @@
             @if (Route::has('login'))
                 @auth
                     <li><a href="{{ url('/dashboard') }}"
-                           class="ml-5 no-underline hover:underline uppercase">Dashboard</a></li>
+                           class="ml-5 no-underline hover:underline uppercase">登入後臺</a></li>
                 @else
-                    <li><a href="{{ route('login') }}" class="ml-5 no-underline hover:underline uppercase">Log in</a>
+                    <li><a href="{{ route('login') }}" class="ml-5 no-underline hover:underline uppercase">登入</a>
                     </li>
 
                     @if (Route::has('register'))
-                        <li><a href="{{ route('register') }}" class="ml-5 no-underline hover:underline uppercase">Register</a>
+                        <li><a href="{{ route('register') }}" class="ml-5 no-underline hover:underline uppercase">登出</a>
                         </li>
                     @endif
                 @endauth
