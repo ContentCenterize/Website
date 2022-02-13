@@ -20,6 +20,7 @@ class CreatePostsTable extends Migration
             $table->bigInteger('category_id')->default(1);
             $table->string('post_id_in_thirdparty');
             $table->text('content');
+            $table->integer('level')->default(1);
             $table->boolean('hide')->default(false);
             $table->softDeletes();
             $table->timestamps();

@@ -13,7 +13,8 @@ class Post extends Model
         'content',
         'post_id_in_thirdparty',
         'hide',
-        'category_id'
+        'category_id',
+        'level'
     ];
 
     public function third_party(){
