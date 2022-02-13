@@ -1,0 +1,29 @@
+@import "normalize.css";
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+.wfucode {
+    background: url(https://4.bp.blogspot.com/-htia_1zZo-Y/U3i6zOKlQfI/AAAAAAAAJe4/VzVTAs3kxEo/s1600/wfublog-code.gif) left top repeat-y #eee;
+}
+.pre {
+    white-space: pre-line;
+}
+code {
+    word-wrap: break-word;
+    word-break: break-all;
+    display: block;
+    font-family: Consolas, 微軟正黑體,'Microsoft JhengHei',sans-serif;
+    font-size: 1rem;
+    overflow: auto;
+    border: 1px solid #ccc;
+    max-height: 400px;
+    line-height: 1.2rem;
+    letter-spacing: 0;
+    color: #000;
+    background: url(https://2.bp.blogspot.com/-MySygQHsDGI/U3jBkvLza6I/AAAAAAAAJfc/zAoNi_DbZPY/s1600/code.gif) left top repeat-y #eee;
+    padding: 5px 5px 5px 20px;
+}
+code {
+    border-radius: 4px;
+}
