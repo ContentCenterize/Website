@@ -17,6 +17,7 @@ class CreatePostsTable extends Migration
             $table->id();
             $table->string('title');
             $table->bigInteger('third_party_id');
+            $table->bigInteger('category_id')->default(1);
             $table->string('post_id_in_thirdparty');
             $table->text('content');
             $table->boolean('hide')->default(false);

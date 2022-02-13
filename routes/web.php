@@ -33,6 +33,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::resource('posts', \App\Http\Controllers\PostController::class);
     Route::resource('third-parties', \App\Http\Controllers\ThirdPartyController::class);
+    Route::middleware('can:edit_category')->resource('category', \App\Http\Controllers\CategoryController::class);
 });
 Route::get('/auth/redirect', function () {
     return Socialite::driver('keycloak')->redirect();

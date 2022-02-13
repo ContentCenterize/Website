@@ -12,10 +12,15 @@ class Post extends Model
         'title',
         'content',
         'post_id_in_thirdparty',
-        'hide'
+        'hide',
+        'category_id'
     ];
 
     public function third_party(){
         return $this->belongsTo(ThirdParty::class);
+    }
+
+    public function category(){
+        return $this->belongsTo(Category::class);
     }
 }

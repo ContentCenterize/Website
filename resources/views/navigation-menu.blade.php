@@ -21,6 +21,12 @@
                     <x-jet-nav-link href="{{ route('third-parties.index') }}" :active="request()->routeIs('third-parties.index')">
                         {{ __('第三方') }}
                     </x-jet-nav-link>
+
+                    @can('edit_category')
+                        <x-jet-nav-link href="{{ route('category.index') }}" :active="request()->routeIs('category.index')">
+                            {{ __('類別') }}
+                        </x-jet-nav-link>
+                    @endcan
                 </div>
             </div>
 
