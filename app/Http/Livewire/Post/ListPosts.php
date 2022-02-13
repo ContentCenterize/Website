@@ -28,7 +28,7 @@ class ListPosts extends Component
     {
         $post = Post::find($id)->first();
         $post->update([
-            'visible' => !$post->visible
+            'hide' => !$post->hide
         ]);
         session()->flash('message', "已更改{$post->title}狀態");
         return \Redirect::route('posts.index');

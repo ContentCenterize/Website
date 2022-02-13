@@ -12,7 +12,7 @@ class Post extends Model
         'title',
         'content',
         'post_id_in_thirdparty',
-        'visible'
+        'hide'
     ];
 
     public function third_party(){

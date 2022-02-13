@@ -21,8 +21,8 @@ class PostPreview extends Component
             $this->posts = Post::all();
         } else{
             $this->posts = $user->posts->filter(function($p){
-                if($p->visible) return true;
-                return false;
+                if($p->hide) return false;
+                return true;
             });
         }
     }
