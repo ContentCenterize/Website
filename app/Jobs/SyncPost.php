@@ -18,7 +18,7 @@ use Log;
 use RobotsTxtParser\RobotsTxtParser;
 use RobotsTxtParser\RobotsTxtValidator;
 
-class SyncPost implements ShouldQueue, ShouldBeUnique
+class SyncPost implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
