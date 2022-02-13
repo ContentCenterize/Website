@@ -13,13 +13,19 @@
             <tbody>
             @foreach($posts as $post)
                 <tr>
-                    <th>{{mb_substr($post->title, 0,50)}}</th>
+                    <th class="break-words">{{mb_substr($post->title, 0,10).'...'}}</th>
                     @if($post->third_party()->first()->type == 'blogger')
                         <td>{{get_id_from_blogger_id($post->post_id_in_thirdparty)['post']}}</td>
                     @else
                         <td>{{$post->post_id_in_thirdparty}}</td>
                     @endif
-                    <td>{{$post->third_party()->first()->name}}</td>
+                    <td>
+                        @if($post->third_party()->first()->type == 'blogger')
+                            <span ><i class="fa-brands fa-blogger" style="color: orange;"></i></span>
+                        @else
+                            {{$post->third_party()->first()->name}}
+                        @endif
+                    </td>
                     <td>
                         <div class="flex justify-center">
                             <div class="form-check form-switch">
@@ -41,10 +47,10 @@
                                class="btn btn-primary"
                             >編輯</a>
                         @endif
-                            <a href="{{route('posts.show', ['post' => $post->id])}}"
-                               target="_blank"
-                               class="btn btn-primary"
-                            >檢視</a>
+                        <a href="{{route('posts.show', ['post' => $post->id])}}"
+                           target="_blank"
+                           class="btn btn-primary"
+                        >檢視</a>
                     </td>
                 </tr>
             @endforeach
