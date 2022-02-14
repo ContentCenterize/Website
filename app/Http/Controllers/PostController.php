@@ -46,8 +46,8 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
+        views($post)->record();
         return view('blog.show')->with('post', $post);
-        #return view('post.show')->with('post', $post);
     }
 
     /**
