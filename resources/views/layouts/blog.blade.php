@@ -27,7 +27,7 @@
     <link rel="stylesheet" href="{{ mix('css/blog/style.css') }}">
     <link rel="stylesheet" media='screen and (max-width: 768px)' href="{{ mix('css/blog/mobile.css') }}">
     <link href="https://fonts.googleapis.com/css?family=Lato|Staatliches&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
 
     <link rel="icon" type="image/png" href="https://laravel.com/favicon.png">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.13.1/build/styles/sunburst.min.css">
@@ -41,7 +41,7 @@
 <body>
 <nav id="main-nav">
     <div class="container">
-        <a href="/"><img src="img/logo.png" alt="NewsMedia" class="logo"></a>
+        <a href="/"><img src="/logo-rect.png" alt="NewsMedia" class="logo"></a>
         <div class='social'>
             <a href="http://facebook.com" target='blank'><i class="fab fa-facebook fa-2x"></i></a>
             <a href="http://twitter.com" target='blank'><i class="fab fa-twitter fa-2x"></i></a>
@@ -83,7 +83,7 @@
 <footer id='main-footer' class='py-2'>
     <div class="container footer-container">
         <div>
-            <img src="img/logo_light.png" alt="logo">
+            <img src="/logo-rect.png" alt="logo">
             <p>網站建置中～</p>
         </div>
         <div>

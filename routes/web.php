@@ -16,9 +16,7 @@ use App\Models\User;
 */
 
 Route::get('/', function () {
-    return view('blog.index')->with('posts', Post::all()->filter(function($v){
-        return true;
-    }));
+    return view('blog.index')->with('posts', Post::where('hide', '!=', true)->get());
 });
 
 Route::prefix('sitemap')->group(function(){

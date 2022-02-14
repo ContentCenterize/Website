@@ -41,6 +41,7 @@
                         </div>
                     </article>
                 @endforeach
+                <!--
                 <article class="card">
                     <img src="img/articles/ent1.jpg" alt="photo">
                     <div>
@@ -129,6 +130,7 @@
                     </div>
                     <img src="img/articles/ent2.jpg" alt="photo">
                 </article>
+                -->
             </div>
         </div>
     </section>
