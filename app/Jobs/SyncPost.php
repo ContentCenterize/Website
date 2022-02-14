@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Http;
 use Log;
 use RobotsTxtParser\RobotsTxtParser;
 use RobotsTxtParser\RobotsTxtValidator;
+use Zend\Feed\Reader\Reader;
 
 class SyncPost implements ShouldQueue
 {
@@ -50,31 +51,33 @@ class SyncPost implements ShouldQueue
             return;
         }
 
-        $response = Http::get($tp->base_url . Config::get("thirdparty.all.{$tp->type}.feed"));
+        # UPD 2022 02 14 RSS Feed
+        $feed_res = Http::get($tp->base_url . Config::get("thirdparty.all.{$tp->type}.feed"));
+        $feed = Reader::importString($feed_res->body());
         $tp->update([
-            'updated' => $response['feed']['updated']['$t']
+            'updated' => $feed->getLastBuildDate()
         ]);
         $sensitive = false;
-        foreach ($response['feed']['entry'] as $data) {
-            $post = $tp->posts()->where('post_id_in_thirdparty', $data['id']['$t'])->first();
+        foreach ($feed as $item) {
+            $post = $tp->posts()->where('post_id_in_thirdparty', $item->getId())->first();
             if (is_null($post)) {
                 $tp->posts()->create([
-                    'title' => $data['title']['$t'],
-                    'content' => make_blog_content($data['content']['$t']),
-                    'post_id_in_thirdparty' => $data['id']['$t']
+                    'title' => $item->getTitle(),
+                    'content' => make_blog_content($item->getDescription()),
+                    'post_id_in_thirdparty' => $item->getId()
                 ]);
             } else {
                 $post->update([
-                    'title' => $data['title']['$t'],
-                    'content' => make_blog_content($data['content']['$t'])
+                    'title' => $item->getTitle(),
+                    'content' => make_blog_content($item->getDescription())
                 ]);
             }
-            if( !$sensitive && has_sensitive($data['content']['$t'])){
+            if (!$sensitive && has_sensitive($item->getDescription())) {
                 $sensitive = true;
             }
         }
 
-        if($sensitive){
+        if ($sensitive) {
             $this->user->notify(new ThirdPartySyncNotification($tp, [
                 'title' => '同步成功，但有需注意事項',
                 'message' => "您的網站內容需合法合規",

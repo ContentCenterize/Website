@@ -13,7 +13,7 @@
             <tbody>
             @foreach($posts as $post)
                 <tr>
-                    <th class="break-words">{{mb_substr($post->title, 0,10).'...'}}</th>
+                    <th class="break-words w-1">{{mb_substr($post->title, 0,10).'...'}}</th>
                     @if($post->third_party()->first()->type == 'blogger')
                         <td>{{get_id_from_blogger_id($post->post_id_in_thirdparty)['post']}}</td>
                     @else
@@ -21,7 +21,9 @@
                     @endif
                     <td>
                         @if($post->third_party()->first()->type == 'blogger')
-                            <span ><i class="fa-brands fa-blogger" style="color: orange;"></i></span>
+                            <span ><i class="fa-brands fa-blogger prose-2xl" style="color: orange;"></i></span>
+                        @elseif($post->third_party()->first()->type == 'wordpress')
+                            <span ><i class="fa-brands fa-wordpress prose-2xl" style="color: blue;"></i></span>
                         @else
                             {{$post->third_party()->first()->name}}
                         @endif
@@ -45,11 +47,11 @@
                             <a href="https://www.blogger.com/blog/post/edit/{{get_id_from_blogger_id($post->post_id_in_thirdparty)['blog']}}/{{get_id_from_blogger_id($post->post_id_in_thirdparty)['post']}}"
                                target="_blank"
                                class="btn btn-primary"
-                            >編輯</a>
+                            >編輯文章</a>
                         @endif
                         <a href="{{route('posts.show', ['post' => $post->id])}}"
                            target="_blank"
-                           class="btn btn-primary"
+                           class="btn btn-secondary"
                         >檢視</a>
                     </td>
                 </tr>
