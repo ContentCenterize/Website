@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Http;
 use Log;
 use RobotsTxtParser\RobotsTxtParser;
 use RobotsTxtParser\RobotsTxtValidator;
-use Zend\Feed\Reader\Reader;
+use Laminas\Feed\Reader\Reader;
 
 class SyncPost implements ShouldQueue
 {
