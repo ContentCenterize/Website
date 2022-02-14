@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c74871482af6fa5ad221f8074f20e510",
+    "content-hash": "851bf6b0b211c358a8a33ef0e58cc502",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -992,6 +992,54 @@
                 }
             ],
             "time": "2020-12-29T14:50:06+00:00"
+        },
+        {
+            "name": "fengqi/hanzi",
+            "version": "v0.1.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fengqi/hanzi.git",
+                "reference": "e69208e93e33f73bba458920f68e9cdf718ca65f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fengqi/hanzi/zipball/e69208e93e33f73bba458920f68e9cdf718ca65f",
+                "reference": "e69208e93e33f73bba458920f68e9cdf718ca65f",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mbstring": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "fengqi\\Hanzi\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "fengqi",
+                    "email": "lyf362345@gmail.com",
+                    "homepage": "http://fengqi.me"
+                }
+            ],
+            "description": "获取汉字的拼音, 或者简繁体转换.",
+            "homepage": "https://github.com/fengqi/hanzi",
+            "keywords": [
+                "Pinyin",
+                "fanti",
+                "hanzi",
+                "jianti"
+            ],
+            "support": {
+                "issues": "https://github.com/fengqi/hanzi/issues",
+                "source": "https://github.com/fengqi/hanzi/tree/v0.1.4"
+            },
+            "time": "2021-08-09T06:52:32+00:00"
         },
         {
             "name": "fruitcake/laravel-cors",
@@ -2640,6 +2688,49 @@
                 }
             ],
             "time": "2022-02-11T21:55:19+00:00"
+        },
+        {
+            "name": "lustre/php-dfa-sensitive",
+            "version": "v1.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/FireLustre/php-dfa-sensitive.git",
+                "reference": "dc33f5a4be86516582fc6ac7c25e33c21a6664e6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/FireLustre/php-dfa-sensitive/zipball/dc33f5a4be86516582fc6ac7c25e33c21a6664e6",
+                "reference": "dc33f5a4be86516582fc6ac7c25e33c21a6664e6",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^6.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "DfaFilter\\": "src/DfaFilter"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Lustre",
+                    "email": "firelustre@163.com"
+                }
+            ],
+            "description": "To achieve the filtering of sensitive words, based on the determination of finite automata (DFA) algorithm.",
+            "support": {
+                "issues": "https://github.com/FireLustre/php-dfa-sensitive/issues",
+                "source": "https://github.com/FireLustre/php-dfa-sensitive/tree/v1.4"
+            },
+            "time": "2019-05-10T08:20:16+00:00"
         },
         {
             "name": "mobiledetect/mobiledetectlib",
@@ -9537,7 +9628,8 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.3|^8.0"
+        "php": "^7.4|^8.0",
+        "ext-dom": "*"
     },
     "platform-dev": [],
     "plugin-api-version": "2.1.0"

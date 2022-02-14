@@ -5,6 +5,7 @@ namespace App\Jobs;
 use App\Models\Post;
 use App\Models\ThirdParty;
 use App\Notifications\ThirdPartySyncNotification;
+use DfaFilter\SensitiveHelper;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -53,23 +54,35 @@ class SyncPost implements ShouldQueue
         $tp->update([
             'updated' => $response['feed']['updated']['$t']
         ]);
+        $sensitive = false;
         foreach ($response['feed']['entry'] as $data) {
             $post = $tp->posts()->where('post_id_in_thirdparty', $data['id']['$t'])->first();
             if (is_null($post)) {
                 $tp->posts()->create([
                     'title' => $data['title']['$t'],
-                    'content' => replace_code_to_block($data['content']['$t']),
+                    'content' => make_blog_content($data['content']['$t']),
                     'post_id_in_thirdparty' => $data['id']['$t']
                 ]);
             } else {
                 $post->update([
                     'title' => $data['title']['$t'],
-                    'content' => replace_code_to_block($data['content']['$t'])
+                    'content' => make_blog_content($data['content']['$t'])
                 ]);
+            }
+            if( !$sensitive && has_sensitive($data['content']['$t'])){
+                $sensitive = true;
             }
         }
 
-        $this->user->notify(new ThirdPartySyncNotification($tp));
+        if($sensitive){
+            $this->user->notify(new ThirdPartySyncNotification($tp, [
+                'title' => '同步成功，但有需注意事項',
+                'message' => "您的網站內容需合法合規",
+                'type' => 'warning'
+            ]));
+        } else {
+            $this->user->notify(new ThirdPartySyncNotification($tp));
+        }
     }
 
 }

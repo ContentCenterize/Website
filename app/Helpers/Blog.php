@@ -15,3 +15,18 @@ if (!function_exists('get_color')) {
         }
     }
 }
+
+if(!function_exists('make_blog_content')){
+    /**
+     * @param $str
+     * @return string
+     */
+    function make_blog_content($str): string
+    {
+        return replace_code_to_block(
+            replace_sensitive(
+                $str
+            )
+        );
+    }
+}

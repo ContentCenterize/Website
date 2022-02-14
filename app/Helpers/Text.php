@@ -1,4 +1,8 @@
 <?php
+
+use DfaFilter\SensitiveHelper;
+use fengqi\Hanzi\Hanzi;
+
 if (!function_exists("post_string_excerpt")){
     /**
      * @param $str
@@ -32,5 +36,19 @@ if (!function_exists("get_first_img")){
         }
 
         return '';
+    }
+}
+
+if(!function_exists('replace_sensitive')){
+    function replace_sensitive($str){
+        $handle = SensitiveHelper::init()->setTreeByFile(resource_path('/illegal/83750.txt'));
+        return $handle->replace($str, '*', true);
+    }
+}
+
+if(!function_exists('has_sensitive')){
+    function has_sensitive($str){
+        $handle = SensitiveHelper::init()->setTreeByFile(resource_path('/illegal/83750.txt'));
+        return $handle->islegal($str);
     }
 }
