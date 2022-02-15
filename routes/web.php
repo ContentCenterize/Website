@@ -23,13 +23,12 @@ Route::prefix('sitemap')->group(function(){
     Route::get('/', [\App\Http\Controllers\SitemapController::class, 'index']);
     Route::get('/posts', [\App\Http\Controllers\SitemapController::class, 'posts']);
 });
-
+Route::resource('posts', \App\Http\Controllers\PostController::class);
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
 
-    Route::resource('posts', \App\Http\Controllers\PostController::class);
     Route::resource('third-parties', \App\Http\Controllers\ThirdPartyController::class);
     Route::middleware('can:edit_category')->resource('category', \App\Http\Controllers\CategoryController::class);
 });

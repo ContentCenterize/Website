@@ -10,10 +10,11 @@ class PostController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function index()
     {
+        $this->middleware = ['auth:sanctum', 'verified'];
         return view('post.index');
     }
 
@@ -46,6 +47,9 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
+        if($post->hide || $post->third_party()->first()->verified == false){
+            abort(404);
+        }
         views($post)->record();
         return view('blog.show')->with('post', $post);
     }

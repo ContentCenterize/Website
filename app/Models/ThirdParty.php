@@ -13,7 +13,8 @@ class ThirdParty extends Model
         'base_url',
         'type',
         'description',
-        'updated'
+        'updated',
+        'verified'
     ];
 
     public function user(){

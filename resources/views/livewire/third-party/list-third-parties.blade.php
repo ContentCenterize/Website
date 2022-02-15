@@ -7,6 +7,7 @@
                 <th>類別</th>
                 <th>詳細資訊</th>
                 <th>上次更新</th>
+                <th>驗證狀態</th>
                 <th>操作</th>
             </tr>
             </thead>
@@ -17,6 +18,11 @@
                     <td>{{Config::get("thirdparty.all.{$third_party->type}.name")}}</td>
                     <td>{{$third_party->description}}</td>
                     <td>{{\Carbon\Carbon::parse($third_party->updated)->shortRelativeToNowDiffForHumans()}}</td>
+                    @if($third_party->verified)
+                        <td>✅ 已驗證</td>
+                    @else
+                        <td>❌ 未驗證</td>
+                    @endif
                     <td>
                         <a href="#confirm_deletion_{{$third_party->id}}" class="btn btn-error">刪除</a>
                         <button wire:click="sync({{$third_party->id}})" class="btn btn-primary">同步</button>

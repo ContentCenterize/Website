@@ -20,6 +20,7 @@ class CreateThirdPartiesTable extends Migration
             $table->text('description')->default('無詳細資訊');
             $table->bigInteger('user_id');
             $table->string('updated')->nullable();
+            $table->boolean('verified')->default(false);
             $table->timestamps();
         });
     }
