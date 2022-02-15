@@ -3,6 +3,9 @@
         <table class="table w-full">
             <thead>
             <tr>
+                @can('read_all_third_parties')
+                    <th>用戶</th>
+                @endcan
                 <th>基礎網址</th>
                 <th>類別</th>
                 <th>詳細資訊</th>
@@ -14,6 +17,9 @@
             <tbody>
             @foreach($third_parties as $third_party)
                 <tr>
+                    @can('read_all_third_parties')
+                        <td>{{$third_party->user()->first()->name}}({{$third_party->user()->first()->id}})</td>
+                    @endcan
                     <td>{{$third_party->base_url}}</td>
                     <td>{{Config::get("thirdparty.all.{$third_party->type}.name")}}</td>
                     <td>{{$third_party->description}}</td>
@@ -26,6 +32,10 @@
                     <td>
                         <a href="#confirm_deletion_{{$third_party->id}}" class="btn btn-error">刪除</a>
                         <button wire:click="sync({{$third_party->id}})" class="btn btn-primary">同步</button>
+
+                        @can('edit_third_party_verified')
+                            <button wire:click="verify({{$third_party->id}})" class="btn btn-error">驗證</button>
+                        @endcan
                     </td>
                 </tr>
             @endforeach

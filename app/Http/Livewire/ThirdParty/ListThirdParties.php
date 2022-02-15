@@ -6,6 +6,7 @@ use App\Jobs\SyncPost;
 use App\Models\Post;
 use App\Models\ThirdParty;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Livewire\Component;
@@ -47,5 +48,18 @@ class ListThirdParties extends Component
         Session::flash('message-type', 'warning');
         session()->flash('message', "已送出同步處理請求，請見通知欄查看結果");
         return Redirect::route('third-parties.index');
+    }
+
+    public function verify($id){
+        if(Gate::check('edit_third_party_verified')){
+            ThirdParty::find($id)->first()->update([
+                'verified' => true
+            ]);
+            Session::flash('message-type', 'warning');
+            session()->flash('message', "已驗證");
+            return Redirect::route('third-parties.index');
+        } else {
+            abort(403);
+        }
     }
 }

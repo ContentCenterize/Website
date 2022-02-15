@@ -23,6 +23,7 @@ class PermissionRoleSeeder extends Seeder
         Permission::create(['name' => 'override_robots']);
         Permission::create(['name' => 'edit_category']);
         Permission::create(['name' => 'edit_post_level']);
+        Permission::create(['name' => 'edit_third_party_verified']);
 
         $role = Role::create(['name' => 'super-admin']);
         $role->givePermissionTo(Permission::all());
