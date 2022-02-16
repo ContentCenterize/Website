@@ -52,7 +52,8 @@ class ListThirdParties extends Component
     public function verify(ThirdParty $thirdParty){
         if(Gate::check('edit_third_party_verified')){
             $thirdParty->update([
-                'verified' => true
+                'verified' => true,
+                'validated_at' => now()
             ]);
             Session::flash('message-type', 'warning');
             session()->flash('message', "已驗證");
