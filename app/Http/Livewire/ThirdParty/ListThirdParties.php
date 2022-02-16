@@ -30,12 +30,11 @@ class ListThirdParties extends Component
         }
     }
 
-    public function delete($id)
+    public function delete(ThirdParty $thirdParty)
     {
         $user = Auth::user();
-        $tp = ThirdParty::find($id);
-        if ($user->third_parties()->get()->contains($tp)) {
-            $tp->delete();
+        if ($user->third_parties()->get()->contains($thirdParty)) {
+            $thirdParty->delete();
             return Redirect::route('third-parties.index');
         } else {
             session()->flash('message', '刪除失敗');
@@ -43,16 +42,16 @@ class ListThirdParties extends Component
         return Redirect::route('third-parties.index');
     }
 
-    public function sync($id){
-        SyncPost::dispatch(ThirdParty::find($id));
+    public function sync(ThirdParty $thirdParty){
+        SyncPost::dispatch($thirdParty);
         Session::flash('message-type', 'warning');
         session()->flash('message', "已送出同步處理請求，請見通知欄查看結果");
         return Redirect::route('third-parties.index');
     }
 
-    public function verify($id){
+    public function verify(ThirdParty $thirdParty){
         if(Gate::check('edit_third_party_verified')){
-            ThirdParty::find($id)->first()->update([
+            $thirdParty->update([
                 'verified' => true
             ]);
             Session::flash('message-type', 'warning');

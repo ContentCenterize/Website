@@ -61,7 +61,7 @@ class SyncPost implements ShouldQueue
         foreach ($feed as $item) {
             $post = $tp->posts()->where('post_id_in_thirdparty', $item->getId())->first();
             if (is_null($post)) {
-                $tp->posts()->create([
+                $post = $tp->posts()->create([
                     'title' => $item->getTitle(),
                     'content' => make_blog_content($item->getDescription()),
                     'post_id_in_thirdparty' => $item->getId()
@@ -72,8 +72,11 @@ class SyncPost implements ShouldQueue
                     'content' => make_blog_content($item->getDescription())
                 ]);
             }
-            if (!$sensitive && has_sensitive($item->getDescription())) {
+            if (has_sensitive($item->getDescription())) {
                 $sensitive = true;
+                $post->update([
+                    'hide' => true
+                ]);
             }
         }
 

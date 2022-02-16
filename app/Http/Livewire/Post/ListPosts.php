@@ -24,13 +24,12 @@ class ListPosts extends Component
         }
     }
 
-    public function toggleVisible($id)
+    public function toggleVisible(Post $post)
     {
-        $post = Post::find($id)->first();
         $post->update([
-            'hide' => !$post->hide
+            'hide' => !($post->hide == true)
         ]);
-        session()->flash('message', "已更改{$post->title}狀態");
+        session()->flash('message', "已更改{$post->title}({$post->id})狀態");
         return \Redirect::route('posts.index');
     }
 }

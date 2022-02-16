@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Notification;
 
+use Illuminate\Notifications\DatabaseNotification;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
@@ -34,11 +35,8 @@ class Panel extends Component
 
     }
 
-    public function readNotification($id){
-        $user = Auth::user();
-        $notification = $user->notifications()->find($id)->first();
-        //dd($notification);
-        $notification->markAsRead();
+    public function readNotification(DatabaseNotification $databaseNotification){
+        $databaseNotification->markAsRead();
         return Redirect::to($this->currentURL);
     }
 }

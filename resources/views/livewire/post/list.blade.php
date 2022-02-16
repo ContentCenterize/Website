@@ -36,10 +36,11 @@
                                     class="form-check-input appearance-none w-9 -ml-10 rounded-full float-left h-5 align-top bg-white bg-no-repeat bg-contain focus:outline-none cursor-pointer shadow-sm"
                                     type="checkbox" id="flexSwitchCheckChecked"
                                     wire:click="toggleVisible({{$post->id}})"
-                                    @if(!$post->hide)
+                                    @if(!($post->hide))
                                     checked
                                     @endif
                                 >
+                                {{$post->hide == true ? '🙈' : '👁'}}
                             </div>
                         </div>
                     </td>

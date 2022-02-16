@@ -20,6 +20,11 @@ class Post extends Model implements Viewable
         'level'
     ];
 
+    protected $casts = [
+        'hide' => 'boolean',
+        'level' => 'integer'
+    ];
+
     public function third_party(){
         return $this->belongsTo(ThirdParty::class);
     }
