@@ -10,6 +10,7 @@
     "require": {
         "php": "^7.4|^8.0",
         "ext-dom": "*",
+        "ext-json": "*",
         "bopoda/robots-txt-parser": "^2.4",
         "cyrildewit/eloquent-viewable": "^6.0",
         "doctrine/dbal": "^3.3",

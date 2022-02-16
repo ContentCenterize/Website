@@ -17,5 +17,19 @@ return [
             'default' => false,
             'feed' => '/feed'
         ]
+    ],
+    'validation' => [
+        'HTML' => [
+            'description' => '上傳HTML檔案',
+            'default' => true,
+        ],
+        'DNS' => [
+            'description' => 'DNS新增TXT標籤',
+            'default' => false,
+        ],
+        'Meta' => [
+            'description' => '新增Meta 標籤',
+            'default' => false,
+        ]
     ]
 ];

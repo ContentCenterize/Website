@@ -8,9 +8,9 @@
         <label class="label" for="type">
             <span class="label-text">類別</span>
         </label>
-        <select id="type" wire:model="type">
+        <select id="type" wire:model="type" autocomplete="off">
             @foreach($types as $type=>$data)
-                <option value="{{$type}}" {{$data['default'] ? 'default' : ''}} >{{$data['name']}}</option>
+                <option value="{{$type}}" {{$data['default'] ? 'selected' : ''}} >{{$data['name']}}</option>
             @endforeach
         </select>
 

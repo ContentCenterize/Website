@@ -30,6 +30,9 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     })->name('dashboard');
 
     Route::resource('third-parties', \App\Http\Controllers\ThirdPartyController::class);
+    Route::prefix('/third-parties/validation')->group(function(){
+        Route::get('/show/{thirdparty}', [\App\Http\Controllers\ThirdPartyValidationController::class, 'show'])->name('third-party-validation.show');
+    });
     Route::middleware('can:edit_category')->resource('category', \App\Http\Controllers\CategoryController::class);
 });
 Route::get('/auth/redirect', function () {

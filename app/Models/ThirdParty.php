@@ -37,4 +37,8 @@ class ThirdParty extends Model
             });
         });
     }
+
+    public function validation(){
+        return $this->hasOne(ThirdPartyValidation::class);
+    }
 }

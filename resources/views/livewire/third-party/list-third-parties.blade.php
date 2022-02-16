@@ -25,16 +25,25 @@
                     <td>{{$third_party->description}}</td>
                     <td>{{\Carbon\Carbon::parse($third_party->updated)->shortRelativeToNowDiffForHumans()}}</td>
                     @if($third_party->verified)
-                        <td>✅ 已驗證</td>
+                        <td>
+                            <a href="{{route('third-party-validation.show', $third_party)}}"
+                               class="btn bg-blue-300 border-0">✅ 已驗證</a>
+                        </td>
                     @else
-                        <td>❌ 未驗證</td>
+                        <td>
+                            <a href="{{route('third-party-validation.show', $third_party)}}"
+                               class="btn bg-orange-300 border-0">❌ 未驗證</a>
+                        </td>
                     @endif
                     <td>
                         <a href="#confirm_deletion_{{$third_party->id}}" class="btn btn-error">刪除</a>
                         <button wire:click="sync({{$third_party->id}})" class="btn btn-primary">同步</button>
-
                         @can('edit_third_party_verified')
-                            <button wire:click="verify({{$third_party->id}})" class="btn btn-error">驗證</button>
+                            @if(!$third_party->verified)
+                                <button wire:click="verify({{$third_party->id}})" class="btn bg-blue-500 border-0">
+                                    人工驗證
+                                </button>
+                            @endif
                         @endcan
                     </td>
                 </tr>
@@ -60,9 +69,11 @@
                 <div class="p-10 card bg-base-200">
                     <div class="form-control">
                         <p>你確定要刪除嗎？一旦刪除就無法恢復</p>
-                        <input type="text" placeholder="輸入 {{$third_party->id}}" wire:model="confirmText" class="input mt-3">
+                        <input type="text" placeholder="輸入 {{$third_party->id}}" wire:model="confirmText"
+                               class="input mt-3">
                         <div class="modal-action">
-                            <a href="#" class="btn btn-error" wire:click="delete({{$third_party->id}})" {{$confirmText == $third_party->id ? '' : 'disabled'}}>確定</a>
+                            <a href="#" class="btn btn-error"
+                               wire:click="delete({{$third_party->id}})" {{$confirmText == $third_party->id ? '' : 'disabled'}}>確定</a>
                             <a href="#" class="btn">Close</a>
                         </div>
                     </div>
