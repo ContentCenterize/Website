@@ -42,12 +42,19 @@
                     檢查 {{ $thirdParty->base_url ."/hsuan-site-verification-". substr(md5($validation->validate_string), 0 , 10) . ".html"}}
                     是否存在
                 </li>
-                <li class="step"><button class="btn btn-success mt-5" wire:click="verify" type="button">驗證</button></li>
             </ul>
         </div>
         <div id="t_DNS" class="{{$validation->type == 'DNS' ? '': 'hidden'}}">
             <p>新增TXT記錄至你的網域DNS</p>
         </div>
+        <div id="t_Meta" class="{{$validation->type == 'Meta' ? '': 'hidden'}}">
+            <p>新增以下HTML至 {{$thirdParty->base_url}} 的 &lt;head&gt; 中</p>
+            <div class="mockup-code mt-3">
+                <pre><code>&lt;meta name="hsuan-site-verification" content="{{$validation->validate_string}}"/&gt;</code></pre>
+            </div>
+        </div>
+
+        <button class="btn btn-success mt-5" wire:click="verify({{$validation->id}})" type="button">驗證</button>
     </div>
     <script>
         window.addEventListener('load', () => {
