@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\ThirdParty\Validation;
 
+use App\Jobs\ThirdPartyValidation\DNS;
 use App\Jobs\ThirdPartyValidation\HTML;
 use App\Jobs\ThirdPartyValidation\Meta;
 use App\Models\ThirdParty;
@@ -68,6 +69,9 @@ class Show extends Component
                 break;
             case 'Meta':
                 Meta::dispatch($thirdPartyValidation);
+                break;
+            case 'DNS':
+                DNS::dispatch($thirdPartyValidation);
                 break;
             default:
         }
