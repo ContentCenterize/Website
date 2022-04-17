@@ -6,14 +6,11 @@
             <div class="showcase-container">
                 <div class="showcase-content">
                     <div class="category category-sports">
-                        Sports
+                        第一篇文章
                     </div>
-                    <h1>Sports Article</h1>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iste deserunt, at laborum accusamus
-                        veniam
-                        reprehenderit deleniti reiciendis vel animi ipsum obcaecati ex nesciunt ipsa, voluptatibus
-                        provident, quas doloribus molestias. Saepe.</p>
-                    <a href="article.html" class="btn btn-primary">Read More</a>
+                    <h1>所謂資訊中心化</h1>
+                    <p>資訊中心化的本質及在於網際網路上資訊發展到最後，必定需要一個中心化之處來存放資訊，才能更好的整理。Google、Facebook即是此種道理</p>
+                    <!--<a href="＃" class="btn btn-primary">Read More</a>-->
                 </div>
             </div>
         </div>

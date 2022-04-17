@@ -36,7 +36,6 @@
 
     <script src="https://kit.fontawesome.com/85a5fdd30e.js" async></script>
 
-    <title>NewsGrid | Article</title>
 </head>
 <body>
 <nav id="main-nav">
@@ -59,7 +58,7 @@
                     </li>
 
                     @if (Route::has('register'))
-                        <li><a href="{{ route('register') }}" class="ml-5 no-underline hover:underline uppercase">登出</a>
+                        <li><a href="{{ route('register') }}" class="ml-5 no-underline hover:underline uppercase">註冊</a>
                         </li>
                     @endif
                 @endauth
