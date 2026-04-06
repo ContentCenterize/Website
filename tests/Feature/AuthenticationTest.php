@@ -7,6 +7,9 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
+use Laravel\Socialite\Facades\Socialite;
+use Mockery;
+
 class AuthenticationTest extends TestCase
 {
     use RefreshDatabase;
@@ -42,4 +45,30 @@ class AuthenticationTest extends TestCase
 
         $this->assertGuest();
     }
+
+    public function test_socialite_callback_creates_or_updates_user()
+    {
+        $socialiteUser = Mockery::mock('Laravel\Socialite\Two\User');
+        $socialiteUser->id = '123456';
+        $socialiteUser->name = 'Test User';
+        $socialiteUser->email = 'test@example.com';
+        $socialiteUser->token = 'fake-token';
+        $socialiteUser->refreshToken = 'fake-refresh-token';
+
+        $provider = Mockery::mock('Laravel\Socialite\Contracts\Provider');
+        $provider->shouldReceive('user')->andReturn($socialiteUser);
+
+        Socialite::shouldReceive('driver')->with('keycloak')->andReturn($provider);
+
+        $response = $this->get(route('auth.callback'));
+
+        $this->assertAuthenticated();
+        $user = User::where('email', 'test@example.com')->first();
+        $this->assertNotNull($user);
+        $this->assertEquals('123456', $user->hsuan_id);
+        $this->assertEquals('fake-token', $user->hsuan_token);
+
+        $response->assertRedirect(route('dashboard'));
+    }
 }
+
